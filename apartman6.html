@@ -63,13 +63,15 @@ body {
 .left { left: 10px; }
 .right { right: 10px; }
 
-/* THUMBS */
+/* THUMBS (FIXED) */
 .thumbs {
   display: flex;
-  justify-content: center;
   gap: 10px;
   padding: 10px;
   background: white;
+
+  overflow-x: auto;
+  flex-wrap: nowrap;
 }
 
 .thumbs img {
@@ -79,6 +81,7 @@ body {
   border-radius: 8px;
   cursor: pointer;
   transition: 0.2s;
+  flex: 0 0 auto;
 }
 
 .thumbs img:hover {
@@ -222,6 +225,19 @@ body {
   <img class="thumb" src="slike/1.jpg">
   <img class="thumb" src="slike/2.jpg">
   <img class="thumb" src="slike/img4.jpg">
+  <img class="thumb" src="slike/1.jpg">
+  <img class="thumb" src="slike/1.jpg">
+  <img class="thumb" src="slike/2.jpg">
+  <img class="thumb" src="slike/img4.jpg">
+  <img class="thumb" src="slike/1.jpg">
+  <img class="thumb" src="slike/2.jpg">
+  <img class="thumb" src="slike/img4.jpg">
+  <img class="thumb" src="slike/1.jpg">
+  <img class="thumb" src="slike/2.jpg">
+  <img class="thumb" src="slike/img4.jpg">
+  <img class="thumb" src="slike/1.jpg">
+  <img class="thumb" src="slike/2.jpg">
+  <img class="thumb" src="slike/img4.jpg">
 </div>
 
 <!-- CONTENT -->
@@ -229,10 +245,7 @@ body {
 
   <div class="box">
     <h2>Ime apartmana</h2>
-    <p>
-      Moderan i udoban apartman na odličnoj lokaciji.
-      Idealan za odmor i boravak.
-    </p>
+    <p>Moderan i udoban apartman na odličnoj lokaciji.</p>
 
     <div class="icons">
       <div class="icon">📶 WiFi</div>
@@ -287,7 +300,7 @@ const thumbs = document.querySelectorAll(".thumb");
 let current = 0;
 let lbIndex = 0;
 
-/* AUTO SLIDER */
+/* SLIDER */
 let interval = setInterval(nextSlide, 3000);
 
 function show(i){
