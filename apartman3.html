@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apartman</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+}
+
+/* TOP */
+.top {
+  background: #111;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.top a {
+  color: white;
+  text-decoration: none;
+}
+
+/* SLIDER */
+.slider {
+  position: relative;
+  height: 55vh;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: 0.8s ease;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  background: rgba(0,0,0,0.4);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.left { left: 10px; }
+.right { right: 10px; }
+
+/* THUMBS */
+.thumbs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  background: white;
+}
+
+.thumbs img {
+  width: 110px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.thumbs img:hover {
+  transform: scale(1.05);
+}
+
+/* CONTENT */
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
+
+.box {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
+.icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.icon {
+  background: #eee;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+/* BOOKING */
+.booking {
+  background: #1877F2;
+  text-align: center;
+  padding: 18px;
+  border-radius: 12px;
+  margin-top: 25px;
+}
+
+.booking a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  display: block;
+}
+
+/* FOOTER */
+.footer {
+  background: #111;
+  color: white;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 40px;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 26px;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  color: #e74c3c;
+}
+
+/* LIGHTBOX */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.95);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 10px;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+}
+
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 40px;
+  color: white;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.l { left: 20px; }
+.r { right: 20px; }
+
+</style>
+</head>
+
+<body>
+
+<div class="top">
+  <div>Apartman</div>
+  <a href="index.html">← Nazad</a>
+</div>
+
+<!-- SLIDER -->
+<div class="slider">
+
+  <div class="slide active" style="background-image:url('1.jpg')"></div>
+  <div class="slide" style="background-image:url('2.jpg')"></div>
+  <div class="slide" style="background-image:url('img4.jpg')"></div>
+
+  <button class="arrow left" onclick="change(-1)">&#10094;</button>
+  <button class="arrow right" onclick="change(1)">&#10095;</button>
+
+</div>
+
+<!-- THUMBS -->
+<div class="thumbs">
+  <img class="thumb" src="1.jpg">
+  <img class="thumb" src="2.jpg">
+  <img class="thumb" src="img4.jpg">
+</div>
+
+<!-- CONTENT -->
+<div class="container">
+
+  <div class="box">
+    <h2>Ime apartmana</h2>
+    <p>
+      Moderan i udoban apartman na odličnoj lokaciji.
+      Idealan za odmor i boravak.
+    </p>
+
+    <div class="icons">
+      <div class="icon">📶 WiFi</div>
+      <div class="icon">❄ Klima</div>
+      <div class="icon">🛏 Krevet</div>
+      <div class="icon">🚿 Kupatilo</div>
+      <div class="icon">🍳 Kuhinja</div>
+    </div>
+
+    <div class="booking">
+      <a href="https://m.me/MedeniApartman" target="_blank">
+        Rezerviši odmah
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+
+  <div>
+    <h3>Kontakt</h3>
+    <p>Telefon: +385 91 144 4471</p>
+    <p>Email: medenisrima@gmail.com</p>
+  </div>
+
+  <div>
+    <h3>Društvene mreže</h3>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-viber"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-whatsapp"></i></a>
+    </div>
+  </div>
+
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lb">
+  <span class="close" onclick="closeLB()">×</span>
+  <button class="nav l" onclick="lbChange(-1)">&#10094;</button>
+  <img id="lbImg">
+  <button class="nav r" onclick="lbChange(1)">&#10095;</button>
+</div>
+
+<script>
+
+const slides = document.querySelectorAll(".slide");
+const thumbs = document.querySelectorAll(".thumb");
+
+let current = 0;
+let lbIndex = 0;
+
+/* AUTO SLIDER */
+let interval = setInterval(nextSlide, 3000);
+
+function show(i){
+  slides.forEach(s => s.classList.remove("active"));
+  slides[i].classList.add("active");
+}
+
+function nextSlide(){
+  current = (current + 1) % slides.length;
+  show(current);
+}
+
+function change(dir){
+  clearInterval(interval);
+
+  current += dir;
+  if(current < 0) current = slides.length - 1;
+  if(current >= slides.length) current = 0;
+
+  show(current);
+
+  interval = setInterval(nextSlide, 3000);
+}
+
+/* LIGHTBOX */
+const lb = document.getElementById("lb");
+const lbImg = document.getElementById("lbImg");
+
+thumbs.forEach((img, index) => {
+  img.addEventListener("click", () => {
+    lbIndex = index;
+    lb.style.display = "flex";
+    lbImg.src = img.src;
+  });
+});
+
+function closeLB(){
+  lb.style.display = "none";
+}
+
+function lbChange(dir){
+  lbIndex += dir;
+
+  if(lbIndex < 0) lbIndex = thumbs.length - 1;
+  if(lbIndex >= thumbs.length) lbIndex = 0;
+
+  lbImg.src = thumbs[lbIndex].src;
+}
+
+</script>
+
+</body>
+</html>
