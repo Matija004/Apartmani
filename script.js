@@ -22,6 +22,7 @@ function changeSlide(dir) {
   if (current >= slides.length) current = 0;
 
   showSlide(current);
+
   interval = setInterval(nextSlide, 3000);
 }
 
@@ -29,28 +30,30 @@ function changeSlide(dir) {
 const form = document.getElementById("kontaktForm");
 const status = document.getElementById("status");
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+if (form) {
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  status.textContent = "Šalje se...";
+    status.textContent = "Šalje se...";
 
-  const data = new FormData(form);
+    const data = new FormData(form);
 
-  try {
-    const res = await fetch("https://formspree.io/f/xlgawkyd", {
-      method: "POST",
-      body: data,
-      headers: { "Accept": "application/json" }
-    });
+    try {
+      const res = await fetch("https://formspree.io/f/xlgawkyd", {
+        method: "POST",
+        body: data,
+        headers: { "Accept": "application/json" }
+      });
 
-    if (res.ok) {
-      status.textContent = "Poruka uspešno poslata ✔";
-      form.reset();
-    } else {
-      status.textContent = "Greška pri slanju.";
+      if (res.ok) {
+        status.textContent = "Poruka uspešno poslata ✔";
+        form.reset();
+      } else {
+        status.textContent = "Greška pri slanju.";
+      }
+
+    } catch (err) {
+      status.textContent = "Greška u konekciji.";
     }
-
-  } catch (err) {
-    status.textContent = "Greška u konekciji.";
-  }
-});
+  });
+}

@@ -70,6 +70,7 @@ body {
   overflow: hidden;
   text-decoration: none;
   color: black;
+  margin-bottom: 20px;
 }
 
 .card img {
@@ -82,10 +83,34 @@ body {
   padding: 15px;
 }
 
+/* POSLEDNJA 3 BEZ MARGINE */
+.grid .card:nth-last-child(-n+3) {
+  margin-bottom: 0;
+}
+
+/* RESPONSIVE GRID */
+
+/* tablet */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 40px;
+  }
+}
+
+/* telefon */
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+}
+
 /* MAPA */
 .location-section {
   text-align: center;
   padding: 60px 20px;
+  margin-top: -80px;
 }
 
 .map-container {
