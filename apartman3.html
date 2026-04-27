@@ -30,24 +30,37 @@ body {
 /* SLIDER */
 .slider {
   position: relative;
-  height: 55vh;
+  height: 75vh;
   overflow: hidden;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* SLIDES */
 .slide {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
+  inset: 0;
   opacity: 0;
-  transition: 0.8s ease;
+  transition: opacity 0.8s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .slide.active {
   opacity: 1;
 }
 
+/* KLJUČNO: bez zooma */
+.slide img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* ARROWS */
 .arrow {
   position: absolute;
   top: 50%;
@@ -58,18 +71,18 @@ body {
   border: none;
   padding: 10px;
   cursor: pointer;
+  z-index: 10;
 }
 
 .left { left: 10px; }
 .right { right: 10px; }
 
-/* THUMBS (FIXED) */
+/* THUMBS */
 .thumbs {
   display: flex;
   gap: 10px;
   padding: 10px;
   background: white;
-
   overflow-x: auto;
   flex-wrap: nowrap;
 }
@@ -80,12 +93,7 @@ body {
   object-fit: cover;
   border-radius: 8px;
   cursor: pointer;
-  transition: 0.2s;
   flex: 0 0 auto;
-}
-
-.thumbs img:hover {
-  transform: scale(1.05);
 }
 
 /* CONTENT */
@@ -154,50 +162,6 @@ body {
 .social-icons a:hover {
   color: #e74c3c;
 }
-
-/* LIGHTBOX */
-.lightbox {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.95);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-
-.lightbox img {
-  max-width: 90%;
-  max-height: 80%;
-  border-radius: 10px;
-}
-
-.close {
-  position: absolute;
-  top: 20px;
-  right: 25px;
-  font-size: 40px;
-  color: white;
-  cursor: pointer;
-}
-
-.nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 40px;
-  color: white;
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-
-.l { left: 20px; }
-.r { right: 20px; }
-
 </style>
 </head>
 
@@ -211,9 +175,17 @@ body {
 <!-- SLIDER -->
 <div class="slider">
 
-  <div class="slide active" style="background-image:url('slike/1.jpg')"></div>
-  <div class="slide" style="background-image:url('slike/2.jpg')"></div>
-  <div class="slide" style="background-image:url('slike/img4.jpg')"></div>
+  <div class="slide active">
+    <img src="slike/GoreDesno/10.JPG">
+  </div>
+
+  <div class="slide">
+    <img src="slike/GoreDesno/29.JPG">
+  </div>
+
+  <div class="slide">
+    <img src="slike/GoreDesno/29.jpeg">
+  </div>
 
   <button class="arrow left" onclick="change(-1)">&#10094;</button>
   <button class="arrow right" onclick="change(1)">&#10095;</button>
@@ -222,22 +194,12 @@ body {
 
 <!-- THUMBS -->
 <div class="thumbs">
-  <img class="thumb" src="slike/1.jpg">
-  <img class="thumb" src="slike/2.jpg">
-  <img class="thumb" src="slike/img4.jpg">
-  <img class="thumb" src="slike/1.jpg">
-  <img class="thumb" src="slike/1.jpg">
-  <img class="thumb" src="slike/2.jpg">
-  <img class="thumb" src="slike/img4.jpg">
-  <img class="thumb" src="slike/1.jpg">
-  <img class="thumb" src="slike/2.jpg">
-  <img class="thumb" src="slike/img4.jpg">
-  <img class="thumb" src="slike/1.jpg">
-  <img class="thumb" src="slike/2.jpg">
-  <img class="thumb" src="slike/img4.jpg">
-  <img class="thumb" src="slike/1.jpg">
-  <img class="thumb" src="slike/2.jpg">
-  <img class="thumb" src="slike/img4.jpg">
+  <img src="slike/GoreDesno/10.JPG">
+  <img src="slike/GoreDesno/5.JPG">
+  <img src="slike/GoreDesno/6.JPG">
+  <img src="slike/GoreDesno/7.JPG">
+  <img src="slike/GoreDesno/8.JPG">
+  <img src="slike/GoreDesno/9.JPG">
 </div>
 
 <!-- CONTENT -->
@@ -256,9 +218,7 @@ body {
     </div>
 
     <div class="booking">
-      <a href="https://m.me/MedeniApartman" target="_blank">
-        Rezerviši odmah
-      </a>
+      <a href="#">Rezerviši odmah</a>
     </div>
   </div>
 
@@ -277,38 +237,25 @@ body {
     <h3>Društvene mreže</h3>
     <div class="social-icons">
       <a href="#"><i class="fab fa-viber"></i></a>
-      <a href="https://www.facebook.com/medeni.apartman" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
       <a href="#"><i class="fab fa-whatsapp"></i></a>
     </div>
   </div>
 
 </div>
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lb">
-  <span class="close" onclick="closeLB()">×</span>
-  <button class="nav l" onclick="lbChange(-1)">&#10094;</button>
-  <img id="lbImg">
-  <button class="nav r" onclick="lbChange(1)">&#10095;</button>
-</div>
-
 <script>
-
 const slides = document.querySelectorAll(".slide");
-const thumbs = document.querySelectorAll(".thumb");
-
 let current = 0;
-let lbIndex = 0;
 
-/* SLIDER */
-let interval = setInterval(nextSlide, 3000);
+let interval = setInterval(next, 3000);
 
 function show(i){
   slides.forEach(s => s.classList.remove("active"));
   slides[i].classList.add("active");
 }
 
-function nextSlide(){
+function next(){
   current = (current + 1) % slides.length;
   show(current);
 }
@@ -322,34 +269,8 @@ function change(dir){
 
   show(current);
 
-  interval = setInterval(nextSlide, 3000);
+  interval = setInterval(next, 3000);
 }
-
-/* LIGHTBOX */
-const lb = document.getElementById("lb");
-const lbImg = document.getElementById("lbImg");
-
-thumbs.forEach((img, index) => {
-  img.addEventListener("click", () => {
-    lbIndex = index;
-    lb.style.display = "flex";
-    lbImg.src = img.src;
-  });
-});
-
-function closeLB(){
-  lb.style.display = "none";
-}
-
-function lbChange(dir){
-  lbIndex += dir;
-
-  if(lbIndex < 0) lbIndex = thumbs.length - 1;
-  if(lbIndex >= thumbs.length) lbIndex = 0;
-
-  lbImg.src = thumbs[lbIndex].src;
-}
-
 </script>
 
 </body>
